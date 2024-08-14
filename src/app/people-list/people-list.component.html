@@ -1,0 +1,33 @@
+
+<!-- 
+   Create a link to navigate to add person page. ROuterlink go to the endpoint that we define 
+-->
+<a routerLink="/person/add" class ="btn btn-outline-primary" style="margin-bottom: 20px;">ADD NEW PERSON</a> <br>
+
+<!-- 
+    Implement search 
+    () -> event binding. [] -> property binding
+    [()] -> listening for an event and attaching an property
+    search: query -> second parameter that we define in the function
+-->
+
+<span>SEARCH:</span>
+<input type="text" [(ngModel)]="query"> {{query}}
+
+<!--
+    *ngFor take a string, start of our for each loop.
+    People refer to people in the component
+    [Person] is binding, meaning take the p variable as person
+
+    (delete) -> when delete event happen, execute onPersonDelete event, and the event parameter 
+                is the one we pass in the person.component.ts
+
+    Just show number of people and people that we filter
+-->
+<p>Number of people: {{people | search:query | countPeople}}</p>
+<app-person 
+    *ngFor="let p of people | search:query"
+    [person] = "p"
+    (delete)="onPersonDelete($event)"
+></app-person>
+

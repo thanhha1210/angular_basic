@@ -1,0 +1,21 @@
+form {
+    border: 1px solid black;
+    width: 70vw;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 0.5em;
+    user-select: none;
+    text-align: center;
+}
+label {
+    width: 20vh;
+    margin: 8px;
+}
+span, input {
+    width: 30vh;
+    display: inline-block;
+}
+.btn-outline-primary {
+    width: 160px;
+}
+

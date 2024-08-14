@@ -1,0 +1,26 @@
+<a routerLink="/" class="btn btn-danger">RETURN</a>
+
+<form class="grid"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+>
+    <label for="name">Name: </label>
+    <span> <b>{{person.name}}</b> </span> <br>
+
+    <label for="age">Age: </label>
+    <input type="number" name="age" id="age" placeholder="{{person.age}}" formControlName ="age">   <br>
+
+    <div class="check-instructor">
+        <label for="instructor">Instructor</label>
+        <input type="checkbox" name="instructor" id="instructor" formControlName="instructor">
+    </div>
+    <span> 
+         Date: {{person.added_on}}
+    </span>
+    <button class="btn btn-outline-primary" type="submit"
+            [disabled]="!form.valid"
+    >
+        SAVE
+    </button>
+    <span *ngIf="form.controls['name'].errors as error0"> {{error0 | json}}</span>
+</form>

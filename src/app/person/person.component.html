@@ -1,0 +1,49 @@
+    <!--
+        Attribute directives~~
+        ngClass -> the inside is boolean value -> if instructor-style is true -> add that class to p
+    -->
+    <p
+    appColors
+    [ngClass]="{ 'instructor-style':person.instructor }"
+>
+    <!--
+        Dynamically show person 
+        2 ways to show content dynamically:
+            Text content -> now we can have access to variable in the .component.ts
+            {{ var }} -> take variable in .component.ts
+        (click) -> notify click event. When click -> send to function onDelete, along with the event obj and person.name 
+                (name uniquely identify this person)
+    -->
+    <u>PERSON</u> <br>
+    name: <span [textContent]="person.name"> </span> <br> 
+    <!-- 
+        PIPE:
+        |date -> a pipe to transform number b/c the person.added_on just show the number, not the date
+        angular provides "date" pipe to change that number in to actual date (month date, year)
+        'MMM dd - yyyy' -> define a way to transform 
+        |uppercase -> a pipe to change to uppercase 
+
+    -->
+    added_on: {{person.added_on | date: 'MMM dd, yyyy' | uppercase}}<br>
+  
+    <!-- 
+        Add some condition to print instructor (not just T/F) using structural directive 
+        ngIf -> if the person is instructor -> print the template ins, else print template notins 
+        ng-template -> allow specify a variable go with this template
+        &check; -> html entity to add the checkbox
+    -->
+    instructor: <span *ngIf="person.instructor; then ins else notins"></span>
+    <ng-template #ins>&check;</ng-template>
+    <ng-template #notins>&#10005;</ng-template>
+
+    <span id="butt" class="d-grid gap-2 col-12">
+        <button id = "show" class="btn btn-outline-primary" (click)="onView()">SHOW MORE</button> 
+        <button 
+            id = "delete" 
+            class="btn btn-outline-danger"
+            (click)="onDelete($event, person.name)"
+        >DELETE</button>
+    </span>
+   
+</p>
+

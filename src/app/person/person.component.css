@@ -1,0 +1,18 @@
+p {
+    border: 1px solid black;
+    width: 70vw;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 0.5em;
+    user-select: none;
+    text-align: center;
+}
+button {
+    margin-top:0.5em;
+}
+
+/* Attach to any person if they are instructor*/
+.instructor-style{
+    border: 1px solid red;
+    box-shadow: 10px 5px 10px grey;
+}
